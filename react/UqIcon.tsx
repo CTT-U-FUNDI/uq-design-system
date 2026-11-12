@@ -6,7 +6,7 @@ import { useId, type CSSProperties } from 'react';
 
 export type UqTone = 'current' | 'red' | 'blue' | 'violet' | 'gold' | 'gradient';
 
-const TONES: Record<UqTone, string> = {
+const TONES: Record<Exclude<UqTone, 'gradient'>, string> = {
   current: 'currentColor',
   red: '#ff4d6d',
   blue: '#4d7cff',

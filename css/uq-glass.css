@@ -10,6 +10,7 @@
 @import './uq-components2.css';
 @import './uq-search.css';
 @import './uq-context.css';
+@import './uq-commerce.css';
 
 /* ---------- Layout ---------- */
 .screen{position:fixed;inset:0;display:flex;flex-direction:column;background:transparent}

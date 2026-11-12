@@ -30,6 +30,7 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 | `css/uq-context.css` | Menu contextuel glass + sliders + voile shield |
 | `js/uq-context.js` | Menu contextuel intelligent (clic droit + appui long) |
 | `js/uq-shield.js` | Moteur anti-capture / anti-copier / lecture seule |
+| `js/uq-device.js` | Anti-appareil : root/jailbreak/ADB/SSH/webdriver + autorisation |
 | `js/uq-notify.js` | Moteur de notifications vanilla JS |
 
 ## Identité visuelle

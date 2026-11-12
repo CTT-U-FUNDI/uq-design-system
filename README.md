@@ -24,6 +24,9 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 | `css/uq-motion.css` | Springs M3 Expressive + durées Fluent 2 + reduced-motion |
 | `css/uq-materials.css` | Mica / Acrylic / Smoke + prefers-contrast |
 | `css/uq-components2.css` | Loader, button-group, split-button, FAB menu, badges, typo |
+| `css/uq-search.css` | Barre pill + suggestions + icône IA animée + écran recherche |
+| `js/uq-search.js` | Moteur de triage intelligent multi-sources (scorer/trier/MoteurUQ) |
+| `react/UqSearch.tsx` | UqSearchBar, UqResultCard, UqSearchScreen, UqIA |
 | `js/uq-notify.js` | Moteur de notifications vanilla JS |
 
 ## Identité visuelle

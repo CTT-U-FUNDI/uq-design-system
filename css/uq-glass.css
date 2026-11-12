@@ -8,6 +8,7 @@
 @import './uq-motion.css';
 @import './uq-materials.css';
 @import './uq-components2.css';
+@import './uq-search.css';
 
 /* ---------- Layout ---------- */
 .screen{position:fixed;inset:0;display:flex;flex-direction:column;background:transparent}

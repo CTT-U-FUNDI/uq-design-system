@@ -11,7 +11,10 @@
     "./js/uq-messages.js": "./js/uq-messages.js",
     "./js/uq-notify.js": "./js/uq-notify.js",
     "./react/UqNotify": "./react/UqNotify.tsx",
-    "./react/UqWizard": "./react/UqWizard.tsx"
+    "./react/UqWizard": "./react/UqWizard.tsx",
+    "./css/uq-search.css": "./css/uq-search.css",
+    "./js/uq-search.js": "./js/uq-search.js",
+    "./react/UqSearch": "./react/UqSearch.tsx"
   },
   "peerDependencies": {
     "react": ">=18"

@@ -1,0 +1,17 @@
+/* Tokens seuls — importable seul ou via uq-glass.css */
+:root{
+  --uq-bg:#07080d;
+  --uq-glass:rgba(255,255,255,.045);
+  --uq-glass2:rgba(255,255,255,.07);
+  --uq-line:rgba(255,255,255,.09);
+  --uq-txt:#eef1f8;
+  --uq-mut:#8b94a7;
+  --uq-red:#ff4d6d;
+  --uq-blue:#4d7cff;
+  --uq-violet:#8b5cf6;
+  --uq-gold:#f5b942;
+  --uq-gold2:#ffd97a;
+  --uq-green:#3ddc84;
+  --uq-grad:linear-gradient(135deg,var(--uq-red),var(--uq-blue) 55%,var(--uq-violet));
+  --uq-grad-soft:linear-gradient(135deg,rgba(255,77,109,.14),rgba(77,124,255,.14) 55%,rgba(139,92,246,.14));
+}

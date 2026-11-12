@@ -1,0 +1,24 @@
+{
+  "name": "@uq/design-system",
+  "version": "1.0.0",
+  "description": "Design system UQ — glassmorphism noir, dégradés rouge/bleu/violet, SVG icons, cibles tactiles. Partagé entre site, wallet et apps mobiles.",
+  "type": "module",
+  "exports": {
+    "./css/uq-glass.css": "./css/uq-glass.css",
+    "./tokens/uq-tokens.css": "./tokens/uq-tokens.css",
+    "./tokens/uq-tokens.json": "./tokens/uq-tokens.json",
+    "./react/UqIcon": "./react/UqIcon.tsx"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "files": [
+    "css",
+    "tokens",
+    "react",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/react": "^19.3.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "theme": "uq-glass-dark",
+  "colors": {
+    "bg": "#07080d",
+    "glass": "rgba(255,255,255,0.045)",
+    "glass2": "rgba(255,255,255,0.07)",
+    "line": "rgba(255,255,255,0.09)",
+    "txt": "#eef1f8",
+    "mut": "#8b94a7",
+    "red": "#ff4d6d",
+    "blue": "#4d7cff",
+    "violet": "#8b5cf6",
+    "gold": "#f5b942",
+    "gold2": "#ffd97a",
+    "green": "#3ddc84"
+  },
+  "gradient": "linear-gradient(135deg,#ff4d6d,#4d7cff 55%,#8b5cf6)",
+  "metrics": {
+    "touchMin": 44,
+    "btnHeight": 54,
+    "inputHeight": 54,
+    "navHeight": 56,
+    "radiusCard": 24,
+    "radiusBtn": 18,
+    "blur": 22
+  }
+}

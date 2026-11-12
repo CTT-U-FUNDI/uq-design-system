@@ -1,0 +1,152 @@
+/* ============================================================
+   UQ Notify — popups système centrés, arrière-plan flouté
+   ============================================================ */
+
+.uq-notif-root{position:fixed;inset:0;z-index:9999;pointer-events:none}
+.uq-notif-root *{pointer-events:auto}
+
+/* Overlay : floute tout ce qui est derrière */
+.uq-notif-overlay{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  background:rgba(4,5,10,.45);
+  backdrop-filter:blur(14px) saturate(1.2);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+  animation:uq-fade-in .25s ease both;
+}
+.uq-notif-bloquant{cursor:default}
+@keyframes uq-fade-in{from{opacity:0}to{opacity:1}}
+.uq-notif-out{animation:uq-fade-out .18s ease both}
+@keyframes uq-fade-out{to{opacity:0}}
+
+/* Carte popup : glass + liseré dégradé */
+.uq-notif-card{
+  position:relative;
+  width:100%;max-width:380px;
+  background:rgba(13,15,24,.82);
+  backdrop-filter:blur(26px) saturate(1.4);
+  -webkit-backdrop-filter:blur(26px) saturate(1.4);
+  border:1px solid transparent;
+  border-radius:26px;
+  padding:30px 26px 24px;
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.uq-notif-card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,rgba(255,77,109,.55),rgba(77,124,255,.5) 55%,rgba(139,92,246,.55));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+
+.uq-notif-icone{
+  width:58px;height:58px;margin:0 auto 14px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);
+  background:var(--glass);
+}
+.uq-notif-succes .uq-notif-icone{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.uq-notif-info .uq-notif-icone{color:var(--blue);border-color:rgba(77,124,255,.4);background:rgba(77,124,255,.08)}
+.uq-notif-patience .uq-notif-icone{color:var(--gold);border-color:rgba(245,185,66,.4);background:rgba(245,185,66,.08)}
+.uq-notif-attention .uq-notif-icone{color:#ffb020;border-color:rgba(255,176,32,.4);background:rgba(255,176,32,.08)}
+.uq-notif-danger .uq-notif-icone{color:var(--red);border-color:rgba(255,77,109,.45);background:rgba(255,77,109,.09)}
+.uq-notif-service .uq-notif-icone{color:var(--violet);border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.09)}
+
+.uq-notif-titre{font-size:17px;font-weight:700;margin-bottom:6px}
+.uq-notif-message{font-size:14.5px;line-height:1.55;color:var(--txt);margin-bottom:8px}
+.uq-notif-detail{font-size:12px;color:var(--mut);line-height:1.5;margin-bottom:14px}
+
+.uq-notif-btn{
+  min-width:130px;height:48px;padding:0 28px;border-radius:16px;
+  background:linear-gradient(135deg,var(--red),var(--blue) 55%,var(--violet));
+  color:#fff;font-weight:700;font-size:14px;
+  box-shadow:0 8px 24px rgba(77,124,255,.3);
+  transition:transform .15s,filter .15s;
+}
+.uq-notif-btn:active{transform:scale(.95);filter:brightness(1.15)}
+
+/* Spinner pour ton 'patience' */
+.uq-notif-spin{
+  width:24px;height:24px;border-radius:50%;
+  border:2.5px solid rgba(245,185,66,.25);border-top-color:var(--gold);
+  animation:uq-spin .8s linear infinite;
+}
+
+/* ---------- Toasts (non bloquants) ---------- */
+.uq-toast{
+  position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));
+  transform:translateX(-50%) translateY(20px);
+  display:flex;align-items:center;gap:10px;
+  max-width:88vw;padding:12px 18px;border-radius:16px;
+  background:rgba(13,15,24,.85);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--line);
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  opacity:0;transition:all .3s cubic-bezier(.2,.8,.3,1);
+  pointer-events:none;z-index:10000;
+}
+.uq-toast-in{opacity:1;transform:translateX(-50%) translateY(0)}
+.uq-toast-icone{display:flex;flex-shrink:0}
+.uq-toast-succes{color:#3ddc84}.uq-toast-info{color:var(--blue)}
+.uq-toast-patience{color:var(--gold)}.uq-toast-attention{color:#ffb020}
+.uq-toast-danger{color:var(--red)}.uq-toast-service{color:var(--violet)}
+.uq-toast-msg{font-size:13.5px;line-height:1.4}
+
+/* ============================================================
+   UQ Wizard — opérations en écrans numérotés
+   Règle : MAX 3 champs/opérations par écran.
+   ============================================================ */
+
+.uq-wizard{display:flex;flex-direction:column;height:100%;min-height:0}
+
+.uq-wizard-progress{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 0 6px;
+}
+.uq-wizard-dot{
+  width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;
+  border:1px solid var(--line);color:var(--mut);
+  background:var(--glass);
+  transition:all .3s;
+}
+.uq-wizard-dot.actif{
+  background:linear-gradient(135deg,var(--red),var(--blue) 55%,var(--violet));
+  color:#fff;border-color:transparent;
+  box-shadow:0 4px 14px rgba(77,124,255,.4);
+}
+.uq-wizard-dot.fait{color:#3ddc84;border-color:rgba(61,220,132,.4)}
+.uq-wizard-dot.fait::after{content:'\2713';font-size:12px}
+.uq-wizard-dot.fait span{display:none}
+.uq-wizard-link{width:22px;height:1px;background:var(--line)}
+
+.uq-wizard-step{
+  flex:1;overflow-y:auto;padding:18px 4px 12px;
+  animation:uq-slide-up .35s cubic-bezier(.2,.8,.3,1) both;
+}
+.uq-wizard-step-title{font-size:19px;font-weight:700;margin-bottom:4px}
+.uq-wizard-step-guide{
+  font-size:13px;color:var(--mut);line-height:1.55;margin-bottom:16px;
+}
+.uq-wizard-fields{display:flex;flex-direction:column;gap:12px}
+/* Règle dure : un écran wizard = au maximum 3 blocs de saisie */
+.uq-wizard-fields > *{max-width:100%}
+
+.uq-wizard-nav{
+  display:flex;gap:10px;padding:12px 0 calc(12px + env(safe-area-inset-bottom));
+}
+.uq-wizard-nav .btn{flex:1}
+.uq-wizard-nav .btn-ghost{flex:0 0 auto;min-width:96px}
+
+/* Message de patience affiché pendant les traitements longs */
+.uq-wizard-patience{
+  display:flex;align-items:center;gap:10px;
+  margin-top:14px;padding:12px 14px;border-radius:14px;
+  border:1px dashed rgba(245,185,66,.4);
+  background:rgba(245,185,66,.06);
+  color:var(--gold2);font-size:12.5px;
+}

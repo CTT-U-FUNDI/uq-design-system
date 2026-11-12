@@ -7,7 +7,11 @@
     "./css/uq-glass.css": "./css/uq-glass.css",
     "./tokens/uq-tokens.css": "./tokens/uq-tokens.css",
     "./tokens/uq-tokens.json": "./tokens/uq-tokens.json",
-    "./react/UqIcon": "./react/UqIcon.tsx"
+    "./react/UqIcon": "./react/UqIcon.tsx",
+    "./js/uq-messages.js": "./js/uq-messages.js",
+    "./js/uq-notify.js": "./js/uq-notify.js",
+    "./react/UqNotify": "./react/UqNotify.tsx",
+    "./react/UqWizard": "./react/UqWizard.tsx"
   },
   "peerDependencies": {
     "react": ">=18"

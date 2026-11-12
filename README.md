@@ -18,6 +18,10 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 | `tokens/uq-tokens.json` | Tokens pour React Native / Swift / Android natif |
 | `react/UqIcon.tsx` | Icônes React — 72 icônes, tons colorés + style 3D |
 | `react-native/uq-icons.ts` | Mêmes paths pour `react-native-svg` |
+| `react/UqNotify.tsx` | Popups système centrés + toasts (React) |
+| `react/UqWizard.tsx` | Wizard écrans numérotés — max 3 champs/écran |
+| `js/uq-messages.js` | Banque de messages par catégorie/ton |
+| `js/uq-notify.js` | Moteur de notifications vanilla JS |
 
 ## Identité visuelle
 

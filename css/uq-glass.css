@@ -3,6 +3,7 @@
 @import './uq-root.css';
 @import './uq-borders.css';
 @import './uq-animations.css';
+@import './uq-backgrounds.css';
 
 /* ---------- Layout ---------- */
 .screen{position:fixed;inset:0;display:flex;flex-direction:column;background:transparent}

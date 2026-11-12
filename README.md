@@ -12,6 +12,7 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 | `css/uq-glass.css` | Composants glass (cartes, boutons, formulaires) |
 | `css/uq-borders.css` | Bordures fines colorées, glows, chips, dégradés |
 | `css/uq-animations.css` | Keyframes : aurora, float, pulse, shimmer, pop |
+| `css/uq-backgrounds.css` | Thèmes `.uq-theme-dark` / `.uq-theme-light` — fonds animés, arcs, fumée |
 | `icons/uq-icons.svg` | Sprite SVG `<symbol>` — usage `<use href="#uq-home">` |
 | `tokens/uq-tokens.css` | Variables CSS seules (`--uq-*`) |
 | `tokens/uq-tokens.json` | Tokens pour React Native / Swift / Android natif |

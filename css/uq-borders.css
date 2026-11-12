@@ -1,0 +1,53 @@
+/* ============================================================
+   UQ Borders — bordures fines colorées, dégradés, glows
+   Usage : .uq-border .uq-border-red|blue|violet|gold
+           .uq-hairline (trait 1px coloré sans fond)
+   ============================================================ */
+
+/* Bordure fine colorée — fond transparent, contour uniquement */
+.uq-hairline{border:1px solid var(--line)}
+.uq-hairline-red{border:1px solid rgba(255,77,109,.45)}
+.uq-hairline-blue{border:1px solid rgba(77,124,255,.45)}
+.uq-hairline-violet{border:1px solid rgba(139,92,246,.45)}
+.uq-hairline-gold{border:1px solid rgba(245,185,66,.45)}
+
+/* Liseré dégradé (masque composite — technique wallet) */
+.uq-grad-border{
+  position:relative;
+  background:var(--glass);
+  backdrop-filter:blur(22px) saturate(1.4);
+  -webkit-backdrop-filter:blur(22px) saturate(1.4);
+  border-radius:24px;
+}
+.uq-grad-border::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:var(--grad);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+
+/* Glow doux autour d'une carte */
+.uq-glow{box-shadow:0 0 0 1px rgba(139,92,246,.18),0 18px 60px rgba(77,124,255,.14),0 8px 30px rgba(255,77,109,.10)}
+.uq-glow-red{box-shadow:0 0 0 1px rgba(255,77,109,.20),0 18px 60px rgba(255,77,109,.14)}
+.uq-glow-blue{box-shadow:0 0 0 1px rgba(77,124,255,.20),0 18px 60px rgba(77,124,255,.16)}
+.uq-glow-violet{box-shadow:0 0 0 1px rgba(139,92,246,.22),0 18px 60px rgba(139,92,246,.16)}
+
+/* Texte en dégradé */
+.uq-text-grad{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+
+/* Pastille fine colorée (icône dans un cercle contour) */
+.uq-chip{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:14px;
+  border:1px solid var(--line);
+  background:var(--glass);
+  color:var(--mut);
+}
+.uq-chip-red{color:var(--red);border-color:rgba(255,77,109,.4);background:rgba(255,77,109,.08)}
+.uq-chip-blue{color:var(--blue);border-color:rgba(77,124,255,.4);background:rgba(77,124,255,.08)}
+.uq-chip-violet{color:var(--violet);border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.08)}
+.uq-chip-gold{color:var(--gold);border-color:rgba(245,185,66,.4);background:rgba(245,185,66,.08)}

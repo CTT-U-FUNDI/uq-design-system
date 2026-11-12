@@ -7,10 +7,16 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 
 | Fichier | Usage |
 |---|---|
-| `css/uq-glass.css` | Thème complet glassmorphism noir (tokens + composants) |
+| `css/uq-glass.css` | **Point d'entrée unique** — assemble tout |
+| `css/uq-root.css` | Tokens + base (body, boutons, inputs) |
+| `css/uq-glass.css` | Composants glass (cartes, boutons, formulaires) |
+| `css/uq-borders.css` | Bordures fines colorées, glows, chips, dégradés |
+| `css/uq-animations.css` | Keyframes : aurora, float, pulse, shimmer, pop |
+| `icons/uq-icons.svg` | Sprite SVG `<symbol>` — usage `<use href="#uq-home">` |
 | `tokens/uq-tokens.css` | Variables CSS seules (`--uq-*`) |
 | `tokens/uq-tokens.json` | Tokens pour React Native / Swift / Android natif |
-| `react/UqIcon.tsx` | Bibliothèque d'icônes SVG inline (aucun emoji) |
+| `react/UqIcon.tsx` | Icônes React — 72 icônes, tons colorés + style 3D |
+| `react-native/uq-icons.ts` | Mêmes paths pour `react-native-svg` |
 
 ## Identité visuelle
 
@@ -20,6 +26,9 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 - Accent or `#f5b942` pour la finance
 - Cibles tactiles ≥ 44 px (boutons 54 px, inputs 54 px, nav 56 px)
 - Feedback press : scale + liseré violet
+- Icônes : contours fins 1.8px, fond transparent, tons rouge/bleu/violet/or
+  ou dégradé signature — variantes "3D" (cube, pièce, carte, gemme, fusée)
+- Bordures : hairlines colorées 1px sans fond + liserés dégradés
 
 ## Utilisation — Web (Vite/React)
 

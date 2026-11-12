@@ -1,0 +1,33 @@
+/* ============================================================
+   UQ Animations — keyframes + classes utilitaires
+   ============================================================ */
+
+@keyframes uq-aurora{from{transform:rotate(0) scale(1)}to{transform:rotate(10deg) scale(1.15)}}
+@keyframes uq-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes uq-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes uq-shimmer{from{background-position:-200% 0}to{background-position:200% 0}}
+@keyframes uq-spin{to{transform:rotate(360deg)}}
+@keyframes uq-pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes uq-slide-up{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes uq-glow-pulse{0%,100%{box-shadow:0 0 12px rgba(139,92,246,.25)}50%{box-shadow:0 0 28px rgba(77,124,255,.4)}}
+
+.uq-anim-float{animation:uq-float 4s ease-in-out infinite}
+.uq-anim-pulse{animation:uq-pulse 2.2s ease-in-out infinite}
+.uq-anim-pop{animation:uq-pop .35s cubic-bezier(.2,.9,.3,1.2) both}
+.uq-anim-slide-up{animation:uq-slide-up .4s cubic-bezier(.2,.8,.3,1) both}
+.uq-anim-spin{animation:uq-spin .8s linear infinite}
+.uq-anim-glow{animation:uq-glow-pulse 2.6s ease-in-out infinite}
+
+/* Skeleton shimmer */
+.uq-shimmer{
+  background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.10) 50%,rgba(255,255,255,.04) 75%);
+  background-size:200% 100%;
+  animation:uq-shimmer 1.4s linear infinite;
+  border-radius:12px;
+}
+
+/* Icône animée : légère oscillation au survol/press */
+.uq-icon-anim{transition:transform .25s cubic-bezier(.2,.8,.3,1.2)}
+.uq-icon-anim:hover{transform:scale(1.12) rotate(-4deg)}
+.uq-icon-anim:active{transform:scale(.94)}
+.uq-icon-float{animation:uq-float 3.2s ease-in-out infinite}

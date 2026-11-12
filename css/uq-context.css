@@ -1,0 +1,139 @@
+/* ============================================================
+   UQ Context — menu contextuel intelligent
+   Clic droit + appui long tactile, sliders, sous-menus,
+   position auto (flip près des bords). Tout est rond/glass.
+   ============================================================ */
+
+.uq-ctx-menu{
+  position:fixed;z-index:10000;min-width:230px;max-width:300px;
+  padding:8px;border-radius:20px;
+  background:rgba(13,15,24,.92);
+  backdrop-filter:blur(26px) saturate(1.5);
+  -webkit-backdrop-filter:blur(26px) saturate(1.5);
+  border:1px solid var(--line);
+  box-shadow:0 20px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07);
+  animation:uq-enter var(--uq-dur-g) var(--uq-ease-decel) both;
+  transform-origin:top left;
+}
+.uq-theme-light .uq-ctx-menu{background:rgba(255,252,246,.94)}
+
+.uq-ctx-item{
+  display:flex;align-items:center;gap:12px;width:100%;
+  padding:11px 14px;border-radius:14px;
+  font-size:14px;font-weight:550;color:var(--txt);
+  transition:background var(--uq-dur-uf),color var(--uq-dur-uf);
+  user-select:none;-webkit-user-select:none;
+}
+.uq-ctx-item:hover,.uq-ctx-item.actif{background:var(--glass2)}
+.uq-ctx-item .uq-ctx-ic{
+  width:30px;height:30px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--grad-soft);color:var(--blue);
+}
+.uq-ctx-item.danger{color:var(--red)}
+.uq-ctx-item.danger .uq-ctx-ic{color:var(--red);background:rgba(255,77,109,.1)}
+.uq-ctx-item .uq-ctx-fleche{margin-left:auto;color:var(--mut);display:flex}
+.uq-ctx-sep{height:1px;margin:6px 10px;background:var(--line)}
+.uq-ctx-label{
+  padding:8px 14px 4px;font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.2px;color:var(--mut);
+}
+
+/* Sous-menu */
+.uq-ctx-sub{
+  position:absolute;left:calc(100% + 6px);top:-8px;
+  min-width:200px;padding:8px;border-radius:18px;
+  background:rgba(13,15,24,.94);
+  backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);
+  border:1px solid var(--line);
+  box-shadow:0 16px 50px rgba(0,0,0,.55);
+  animation:uq-enter var(--uq-dur-g) var(--uq-ease-decel) both;
+  transform-origin:top left;
+}
+.uq-ctx-item.ouvert > .uq-ctx-ic{color:var(--violet)}
+
+/* ---------- Slider dans le menu ---------- */
+.uq-ctx-slider{
+  padding:12px 14px 14px;min-width:250px;
+}
+.uq-ctx-slider-tete{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;font-weight:600;color:var(--txt);margin-bottom:10px;
+}
+.uq-ctx-slider-val{
+  font-size:12px;font-weight:700;color:var(--violet);
+  background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);
+  padding:2px 9px;border-radius:999px;
+}
+.uq-ctx-range{
+  -webkit-appearance:none;appearance:none;width:100%;height:26px;
+  background:transparent;cursor:pointer;
+}
+.uq-ctx-range::-webkit-slider-runnable-track{
+  height:6px;border-radius:999px;
+  background:linear-gradient(90deg,var(--red),var(--blue) 55%,var(--violet));
+  opacity:.85;
+}
+.uq-ctx-range::-webkit-slider-thumb{
+  -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+  background:#fff;margin-top:-8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.5),0 0 0 4px rgba(139,92,246,.2);
+  border:2px solid var(--violet);
+  transition:transform var(--uq-dur-fst) var(--uq-ease-spring);
+}
+.uq-ctx-range::-webkit-slider-thumb:active{transform:scale(1.2)}
+.uq-ctx-range::-moz-range-track{
+  height:6px;border-radius:999px;
+  background:linear-gradient(90deg,var(--red),var(--blue) 55%,var(--violet));
+}
+.uq-ctx-range::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:#fff;
+  border:2px solid var(--violet);box-shadow:0 2px 10px rgba(0,0,0,.5);
+}
+
+/* Pastille "appui long" : indicateur visuel pendant le press-and-hold */
+.uq-ctx-hint{
+  position:fixed;z-index:9998;pointer-events:none;
+  width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;
+  border:2px solid rgba(139,92,246,.6);
+  background:rgba(139,92,246,.12);
+  animation:uq-pulse 1s ease-in-out infinite;
+}
+
+/* ============================================================
+   UQ Shield — moteur anti-capture / anti-fuite
+   Zones sensibles : [data-uq-sensitive] ou mots-clés
+   (compte, wallet, profil, chat, seed, phrase, transaction…)
+   ============================================================ */
+
+/* Zone sensible : sélection et interactions bloquées */
+[data-uq-sensitive],.uq-sensitive{
+  user-select:none;-webkit-user-select:none;-moz-user-select:none;
+  -webkit-touch-callout:none;
+}
+
+/* Mode lecture seule : champs grisés dans les zones sensibles */
+.uq-shield-ro input,.uq-shield-ro textarea,.uq-shield-ro [contenteditable="true"]{
+  pointer-events:none;opacity:.55;
+}
+.uq-shield-ro [contenteditable="true"]{contenteditable:"false"}
+
+/* Voile privacy : floute le contenu sensible quand l'onglet
+   perd le focus (alt-tab, capture d'écran OS sur certains OS). */
+.uq-shield-voile{
+  position:fixed;inset:0;z-index:9997;pointer-events:none;
+  backdrop-filter:blur(22px) saturate(.6);
+  -webkit-backdrop-filter:blur(22px) saturate(.6);
+  background:rgba(5,6,11,.35);
+  opacity:0;transition:opacity .3s ease;
+}
+.uq-shield-voile.on{opacity:1;pointer-events:auto}
+
+/* Filigrane discret "UQ CONFIDENTIEL" en fond des zones */
+.uq-shield-wm{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;letter-spacing:3px;
+  color:rgba(139,92,246,.07);transform:rotate(-18deg);
+  white-space:nowrap;overflow:hidden;
+}

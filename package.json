@@ -14,7 +14,9 @@
     "./react/UqWizard": "./react/UqWizard.tsx",
     "./css/uq-search.css": "./css/uq-search.css",
     "./js/uq-search.js": "./js/uq-search.js",
-    "./react/UqSearch": "./react/UqSearch.tsx"
+    "./react/UqSearch": "./react/UqSearch.tsx",
+    "./js/uq-context.js": "./js/uq-context.js",
+    "./js/uq-shield.js": "./js/uq-shield.js"
   },
   "peerDependencies": {
     "react": ">=18"

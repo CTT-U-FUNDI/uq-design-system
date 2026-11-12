@@ -27,6 +27,9 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 | `css/uq-search.css` | Barre pill + suggestions + icône IA animée + écran recherche |
 | `js/uq-search.js` | Moteur de triage intelligent multi-sources (scorer/trier/MoteurUQ) |
 | `react/UqSearch.tsx` | UqSearchBar, UqResultCard, UqSearchScreen, UqIA |
+| `css/uq-context.css` | Menu contextuel glass + sliders + voile shield |
+| `js/uq-context.js` | Menu contextuel intelligent (clic droit + appui long) |
+| `js/uq-shield.js` | Moteur anti-capture / anti-copier / lecture seule |
 | `js/uq-notify.js` | Moteur de notifications vanilla JS |
 
 ## Identité visuelle

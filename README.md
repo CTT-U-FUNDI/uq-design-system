@@ -21,6 +21,9 @@ interfaces : site UQ Platform, wallet BORB, apps Android/iOS, sites partenaires.
 | `react/UqNotify.tsx` | Popups système centrés + toasts (React) |
 | `react/UqWizard.tsx` | Wizard écrans numérotés — max 3 champs/écran |
 | `js/uq-messages.js` | Banque de messages par catégorie/ton |
+| `css/uq-motion.css` | Springs M3 Expressive + durées Fluent 2 + reduced-motion |
+| `css/uq-materials.css` | Mica / Acrylic / Smoke + prefers-contrast |
+| `css/uq-components2.css` | Loader, button-group, split-button, FAB menu, badges, typo |
 | `js/uq-notify.js` | Moteur de notifications vanilla JS |
 
 ## Identité visuelle

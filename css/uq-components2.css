@@ -1,0 +1,101 @@
+/* ============================================================
+   UQ Components 2 — inspiré M3 Expressive + Fluent 2
+   Button groups, split button, FAB menu, loading indicator,
+   échelle typographique "emphasized"
+   ============================================================ */
+
+/* ---------- Échelle typo expressive ---------- */
+.uq-display{font-size:34px;font-weight:800;letter-spacing:-.5px;line-height:1.1}
+.uq-headline{font-size:24px;font-weight:750;letter-spacing:-.3px;line-height:1.2}
+.uq-title{font-size:17px;font-weight:700;letter-spacing:-.1px}
+.uq-body{font-size:14.5px;font-weight:500;line-height:1.55}
+.uq-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--mut)}
+/* Emphasized : mot-clé en dégradé dans un titre */
+.uq-emph{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- Loading indicator (M3 Expressive) ----------
+   Double anneau — remplace les spinners basiques. */
+.uq-loader{
+  width:44px;height:44px;border-radius:50%;position:relative;
+  border:3px solid rgba(255,255,255,.08);
+  border-top-color:var(--blue);border-right-color:var(--violet);
+  animation:uq-spin .9s var(--uq-ease-standard) infinite;
+}
+.uq-loader::after{
+  content:'';position:absolute;inset:6px;border-radius:50%;
+  border:2px solid transparent;border-bottom-color:var(--red);
+  animation:uq-spin .6s var(--uq-ease-standard) infinite reverse;
+}
+.uq-loader-sm{width:22px;height:22px;border-width:2.5px}
+.uq-loader-sm::after{inset:4px;border-width:1.5px}
+
+/* ---------- Button group (M3 Expressive) ----------
+   Groupe de boutons reliés, un seul contour. */
+.uq-btn-group{
+  display:inline-flex;border-radius:18px;overflow:hidden;
+  border:1px solid var(--line);background:var(--glass);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.uq-btn-group > button{
+  height:48px;padding:0 18px;font-weight:600;font-size:13.5px;
+  color:var(--mut);border-right:1px solid var(--line);
+  transition:background var(--uq-dur-fst),color var(--uq-dur-fst);
+}
+.uq-btn-group > button:last-child{border-right:none}
+.uq-btn-group > button:hover{color:var(--txt);background:var(--glass2)}
+.uq-btn-group > button.actif{
+  color:#fff;
+  background:linear-gradient(135deg,rgba(255,77,109,.25),rgba(77,124,255,.25) 55%,rgba(139,92,246,.25));
+}
+
+/* ---------- Split button ----------
+   Action principale + menu séparé qui pivote à l'activation. */
+.uq-split{display:inline-flex;align-items:stretch;border-radius:18px;overflow:hidden}
+.uq-split .btn{border-radius:0}
+.uq-split .btn:first-child{border-radius:18px 0 0 18px}
+.uq-split .btn:last-child{
+  border-radius:0 18px 18px 0;min-width:52px;
+  display:flex;align-items:center;justify-content:center;
+}
+.uq-split .btn:last-child svg{transition:transform var(--uq-dur-n) var(--uq-ease-spring)}
+.uq-split.open .btn:last-child svg{transform:rotate(180deg)}
+
+/* ---------- FAB + FAB menu (M3 Expressive) ---------- */
+.uq-fab{
+  position:fixed;right:20px;bottom:calc(84px + env(safe-area-inset-bottom));
+  width:56px;height:56px;border-radius:50%;z-index:100;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,var(--red),var(--blue) 55%,var(--violet));
+  box-shadow:0 10px 30px rgba(77,124,255,.45),0 4px 14px rgba(255,77,109,.3);
+  transition:transform var(--uq-dur-fst) var(--uq-ease-spring),box-shadow var(--uq-dur-n);
+}
+.uq-fab:active{transform:scale(.9)}
+.uq-fab.open{transform:rotate(45deg)}
+.uq-fab-menu{
+  position:fixed;right:20px;bottom:calc(150px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;z-index:99;
+}
+.uq-fab-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px 10px 12px;border-radius:16px;
+  background:rgba(15,17,28,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--line);color:var(--txt);font-size:13.5px;font-weight:600;
+  box-shadow:0 8px 26px rgba(0,0,0,.4);
+  animation:uq-enter var(--uq-dur-g) var(--uq-ease-decel) both;
+}
+.uq-fab-item .uq-fab-ic{
+  width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:var(--grad-soft);color:var(--blue);
+}
+
+/* ---------- Chip/Badge expressif ---------- */
+.uq-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;
+  letter-spacing:.4px;text-transform:uppercase;
+}
+.uq-badge-red{background:rgba(255,77,109,.14);color:var(--red);border:1px solid rgba(255,77,109,.35)}
+.uq-badge-blue{background:rgba(77,124,255,.14);color:var(--blue);border:1px solid rgba(77,124,255,.35)}
+.uq-badge-violet{background:rgba(139,92,246,.14);color:var(--violet);border:1px solid rgba(139,92,246,.35)}
+.uq-badge-gold{background:rgba(245,185,66,.14);color:var(--gold);border:1px solid rgba(245,185,66,.35)}
+.uq-badge-green{background:rgba(61,220,132,.13);color:var(--green);border:1px solid rgba(61,220,132,.35)}

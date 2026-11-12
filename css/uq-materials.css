@@ -1,0 +1,47 @@
+/* ============================================================
+   UQ Materials — Mica / Acrylic / Smoke (vocabulaire Fluent 2
+   appliqué au glassmorphism UQ)
+   ============================================================ */
+
+/* MICA : fond d'app chrome — opaque, teinté, pas de blur.
+   Pour les barres fixes, nav, headers qui restent lisibles
+   pendant le scroll. */
+.uq-mica{
+  background:rgba(10,12,20,.92);
+  backdrop-filter:blur(8px) saturate(1.2);
+  -webkit-backdrop-filter:blur(8px) saturate(1.2);
+  border-bottom:1px solid var(--line);
+}
+.uq-theme-light .uq-mica{background:rgba(244,239,230,.92)}
+
+/* ACRYLIC : surfaces transitoires — popovers, menus, tooltips.
+   Flou fort + teinte subtile. Déjà utilisé par .uq-notif-card. */
+.uq-acrylic{
+  background:rgba(15,17,28,.72);
+  backdrop-filter:blur(28px) saturate(1.5);
+  -webkit-backdrop-filter:blur(28px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 16px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.uq-theme-light .uq-acrylic{
+  background:rgba(255,252,246,.78);
+  border-color:rgba(120,90,60,.16);
+  box-shadow:0 16px 50px rgba(80,60,30,.18),inset 0 1px 0 rgba(255,255,255,.7);
+}
+
+/* SMOKE : voile assombrissant derrière une modale.
+   Version légère du scrim notify pour les sheets non bloquantes. */
+.uq-smoke{
+  background:rgba(3,4,9,.55);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+
+/* HAUTE CONTRASTE : renforcé pour accessibilité */
+@media (prefers-contrast:more){
+  .uq-theme-dark{--line:rgba(255,255,255,.22);--mut:#b8c0d4}
+  .uq-theme-light{--line:rgba(90,70,50,.28);--mut:#5c5044}
+  .uq-notif-card,.uq-acrylic{border-width:2px}
+}
+.uq-contrast .uq-notif-card,.uq-contrast .uq-acrylic{border-width:2px}
+.uq-contrast .uq-hairline{border-width:2px}

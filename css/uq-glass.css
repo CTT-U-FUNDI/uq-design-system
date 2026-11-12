@@ -5,6 +5,9 @@
 @import './uq-animations.css';
 @import './uq-backgrounds.css';
 @import './uq-notify.css';
+@import './uq-motion.css';
+@import './uq-materials.css';
+@import './uq-components2.css';
 
 /* ---------- Layout ---------- */
 .screen{position:fixed;inset:0;display:flex;flex-direction:column;background:transparent}

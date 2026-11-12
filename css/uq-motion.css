@@ -1,0 +1,53 @@
+/* ============================================================
+   UQ Motion — physique des springs (inspiré M3 Expressive
+   + échelle de durées Fluent 2)
+   ============================================================ */
+
+:root{
+  /* Durées Fluent 2 */
+  --uq-dur-uf:50ms; --uq-dur-f:100ms; --uq-dur-fst:150ms;
+  --uq-dur-n:200ms;  --uq-dur-g:250ms; --uq-dur-s:300ms;
+  --uq-dur-slr:400ms; --uq-dur-us:500ms;
+  /* Courbes */
+  --uq-ease-standard:cubic-bezier(.2,.8,.3,1);
+  --uq-ease-accel:cubic-bezier(.3,0,1,1);      /* arrive vite, freine */
+  --uq-ease-decel:cubic-bezier(0,0,.2,1);      /* démarre doux */
+  --uq-ease-spring:cubic-bezier(.34,1.56,.64,1);/* overshoot léger (expressive) */
+  --uq-ease-spring-fort:cubic-bezier(.5,1.8,.4,.9); /* bounce marqué */
+}
+
+/* Transitions prêtes à l'emploi */
+.uq-t-fast{transition:all var(--uq-dur-fst) var(--uq-ease-standard)}
+.uq-t-normal{transition:all var(--uq-dur-n) var(--uq-ease-standard)}
+.uq-t-slow{transition:all var(--uq-dur-s) var(--uq-ease-decel)}
+.uq-t-spring{transition:all var(--uq-dur-g) var(--uq-ease-spring)}
+
+/* Press physique : enfoncement avec ressort au relâchement */
+.uq-press{transition:transform var(--uq-dur-fst) var(--uq-ease-standard),filter var(--uq-dur-fst) var(--uq-ease-standard)}
+.uq-press:active{transform:scale(.94);transition-duration:var(--uq-dur-uf)}
+.uq-press:active + *, .uq-press.uq-pressed{transform:scale(1.03);transition-timing-function:var(--uq-ease-spring)}
+
+/* Entrées/sorties expressives */
+.uq-enter{animation:uq-enter var(--uq-dur-s) var(--uq-ease-decel) both}
+@keyframes uq-enter{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:none}}
+.uq-exit{animation:uq-exit var(--uq-dur-fst) var(--uq-ease-accel) both}
+@keyframes uq-exit{to{opacity:0;transform:scale(.96) translateY(-6px)}}
+
+/* Shared-element : transition douce d'une carte "hero" */
+.uq-shared{transition:transform var(--uq-dur-slr) var(--uq-ease-spring),box-shadow var(--uq-dur-slr) var(--uq-ease-standard),border-radius var(--uq-dur-slr) var(--uq-ease-standard)}
+
+/* Respect du système : reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .uq-theme-dark::after,.uq-theme-light::after,
+  .uq-theme-light::before{animation:none!important}
+  .uq-anim-float,.uq-anim-pulse,.uq-anim-spin,.uq-anim-glow,
+  .uq-icon-float,.uq-shimmer{animation:none!important}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+/* Focus visible — accessibilité clavier (Fluent) */
+:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px;
+  border-radius:8px;
+}
